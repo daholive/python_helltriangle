@@ -4,9 +4,6 @@ from functools import lru_cache
 Row = Sequence[int]
 Triangle = Sequence[Row]
 
-Row = Sequence[int]
-Triangle = Sequence[Row]
-
 def split(tri: Triangle) -> Tuple[Triangle, Triangle]:
     # Retorna os subtriangulos da esquerda e direita como left e right
     left_right_pairs = ((row[:-1], row[1:]) for row in tri[1:])

@@ -30,18 +30,15 @@ def test_split():
     assert left == ((3,), (9, 7), (4, 6, 8))
     assert right == ((5,), (7, 1), (6, 8, 4))
 
-
 def test_max_path():
     assert ht.max_path(TRI_1) == 26
     assert ht.max_path(TRI_2) == 105
     assert ht.max_path(TRI_3) == 105
 
-
 def test_max_path_cached():
     assert ht.max_path_cached(TRI_1) == 26
     assert ht.max_path_cached(TRI_2) == 105
     assert ht.max_path_cached(TRI_3) == 105
-
 
 def test_max_path_iterative():
     assert ht.max_path_iterative(TRI_1) == 26
