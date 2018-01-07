@@ -1,4 +1,4 @@
-Hell Triangle - Ssolução para o Algoritmo
+Hell Triangle - Solução para o Algoritmo
 =============
 O Problema
 -----------
