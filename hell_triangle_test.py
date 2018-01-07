@@ -1,5 +1,3 @@
-"""Tests for hell_triangle."""
-
 import hell_triangle as ht
 
 TRI_1 = (
@@ -26,7 +24,6 @@ TRI_3 = (
     (9, 1, 1, 1, 1),
     (9, 1, 1, 1, 1, 100),
 )
-
 
 def test_split():
     left, right = ht.split(TRI_1)
