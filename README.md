@@ -83,9 +83,9 @@ def max_path(tri: Triangle) -> int:
     left, right = split(tri)
     return tri[0][0] + max(max_path(left), max_path(right))
 ```
-It first checks if the triangle is just a single element, a case that the maximum sum would be just itself. If not, it splits the triangle in left and right and returns the expression that will yield its maximum sum, which is its own value plus either the maximum sum of the left subtriangle or the right, whichever is larger.
+Primeiro verifica se o triângulo é apenas um único elemento, um caso em que a soma máxima seria apenas ela mesma. Caso contrário, ele divide o triângulo na esquerda e direita e retorna a expressão que renderá sua soma máxima, que é seu próprio valor mais a soma máxima do subtriangle esquerdo ou o direito, o que for maior.
 
-This solution is very close to what we did by hand, but it is not very efficient. It took 75 seconds to get the max sum of a 25 rows triangle on my machine. This is a reality for two reasons. First it creates two new triangles with repetitive information for every call of the `split()` function. And also, it will recalculate a lot of identical function calls. For example, look at this triangle:
+Esta solução é muito próxima do que fizemos à mão, mas não é muito eficiente. Foram necessários 75 segundos para obter a soma máxima de um triângulo de 25 linhas na minha máquina. Esta é uma realidade por duas razões. Primeiro, ele cria dois novos triângulos com informações repetitivas para cada chamada da função `split ()`. E também, irá recalcular muitas chamadas de função idênticas. Por exemplo, veja este triângulo:
 ```
      0
     0 0
@@ -125,7 +125,6 @@ def max_path_cached(tri: Triangle) -> int:
 
     return max_path_from(0, 0)
 ```
-This function defines a constant of the triangle's `last_row_index`,defines another function called `max_path_from()` and return it with parameters `i=0, j=0`. Note that this last function have access to `last_row_index` and the `tri` parameter. The `max_path_from()` function returns the maximum sum of the subtriangle that starts at the row `i` and column `j`. It works by same principle of the previous algorithm, but navigates the triangle with indices to prevent copying and facilitate the caching. First it goes to the left on the triangle, untill it reaches a last row element, which the sum is istself. Then it goes back one stack frame and it will have the value for the left variable. Following, it will get the value for the right subtriangle, return its maximum path and go back a stack frame again. And so on. This and more would correspond to something like
 
 Esta função define uma constante do `last_row_index` do triângulo, define outra função chamada `max_path_from ()` e retorna com os parâmetros `i = 0, j = 0`. Observe que esta última função tem acesso a `last_row_index` e ao parâmetro `tri`. A função `max_path_from ()` retorna a soma máxima do subtriangle que começa na linha `i` e coluna` j`. Ele funciona pelo mesmo princípio do algoritmo anterior, mas navega pelo triângulo com índices para evitar a cópia e facilitar o armazenamento em cache. Primeiro, ele vai para a esquerda no triângulo, até chegar a um último elemento de linha, que a soma é mesmo. Em seguida, ele volta um quadro de pilha e terá o valor para a variável esquerda. Em seguida, obterá o valor para o subtriangle direito, retornará o seu caminho máximo e volte novamente a um quadro de pilha. E assim por diante. Isto e mais corresponderiam a algo como:
 
